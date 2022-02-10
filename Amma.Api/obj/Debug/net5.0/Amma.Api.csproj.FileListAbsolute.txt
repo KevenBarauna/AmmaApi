@@ -7,6 +7,8 @@ G:\Work\PROJETO\_PESSOAL\AMMA\Amma.Api\bin\Debug\net5.0\Amma.Api.runtimeconfig.d
 G:\Work\PROJETO\_PESSOAL\AMMA\Amma.Api\bin\Debug\net5.0\Amma.Api.dll
 G:\Work\PROJETO\_PESSOAL\AMMA\Amma.Api\bin\Debug\net5.0\ref\Amma.Api.dll
 G:\Work\PROJETO\_PESSOAL\AMMA\Amma.Api\bin\Debug\net5.0\Amma.Api.pdb
+G:\Work\PROJETO\_PESSOAL\AMMA\Amma.Api\bin\Debug\net5.0\AutoMapper.dll
+G:\Work\PROJETO\_PESSOAL\AMMA\Amma.Api\bin\Debug\net5.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
 G:\Work\PROJETO\_PESSOAL\AMMA\Amma.Api\bin\Debug\net5.0\Microsoft.Bcl.AsyncInterfaces.dll
 G:\Work\PROJETO\_PESSOAL\AMMA\Amma.Api\bin\Debug\net5.0\Microsoft.Bcl.HashCode.dll
 G:\Work\PROJETO\_PESSOAL\AMMA\Amma.Api\bin\Debug\net5.0\Microsoft.Data.SqlClient.dll
@@ -14,6 +16,9 @@ G:\Work\PROJETO\_PESSOAL\AMMA\Amma.Api\bin\Debug\net5.0\Microsoft.EntityFramewor
 G:\Work\PROJETO\_PESSOAL\AMMA\Amma.Api\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Abstractions.dll
 G:\Work\PROJETO\_PESSOAL\AMMA\Amma.Api\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Relational.dll
 G:\Work\PROJETO\_PESSOAL\AMMA\Amma.Api\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.SqlServer.dll
+G:\Work\PROJETO\_PESSOAL\AMMA\Amma.Api\bin\Debug\net5.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+G:\Work\PROJETO\_PESSOAL\AMMA\Amma.Api\bin\Debug\net5.0\Microsoft.Extensions.Options.dll
+G:\Work\PROJETO\_PESSOAL\AMMA\Amma.Api\bin\Debug\net5.0\Microsoft.Extensions.Primitives.dll
 G:\Work\PROJETO\_PESSOAL\AMMA\Amma.Api\bin\Debug\net5.0\Microsoft.Identity.Client.dll
 G:\Work\PROJETO\_PESSOAL\AMMA\Amma.Api\bin\Debug\net5.0\Microsoft.IdentityModel.JsonWebTokens.dll
 G:\Work\PROJETO\_PESSOAL\AMMA\Amma.Api\bin\Debug\net5.0\Microsoft.IdentityModel.Logging.dll
@@ -28,6 +33,7 @@ G:\Work\PROJETO\_PESSOAL\AMMA\Amma.Api\bin\Debug\net5.0\Swashbuckle.AspNetCore.S
 G:\Work\PROJETO\_PESSOAL\AMMA\Amma.Api\bin\Debug\net5.0\System.Configuration.ConfigurationManager.dll
 G:\Work\PROJETO\_PESSOAL\AMMA\Amma.Api\bin\Debug\net5.0\System.IdentityModel.Tokens.Jwt.dll
 G:\Work\PROJETO\_PESSOAL\AMMA\Amma.Api\bin\Debug\net5.0\System.Runtime.Caching.dll
+G:\Work\PROJETO\_PESSOAL\AMMA\Amma.Api\bin\Debug\net5.0\System.Runtime.CompilerServices.Unsafe.dll
 G:\Work\PROJETO\_PESSOAL\AMMA\Amma.Api\bin\Debug\net5.0\System.Security.Cryptography.ProtectedData.dll
 G:\Work\PROJETO\_PESSOAL\AMMA\Amma.Api\bin\Debug\net5.0\runtimes\unix\lib\netcoreapp2.1\Microsoft.Data.SqlClient.dll
 G:\Work\PROJETO\_PESSOAL\AMMA\Amma.Api\bin\Debug\net5.0\runtimes\win\lib\netcoreapp2.1\Microsoft.Data.SqlClient.dll

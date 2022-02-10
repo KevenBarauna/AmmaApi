@@ -16,6 +16,9 @@ using Microsoft.OpenApi.Models;
 using Amma.Infrastructure.Interfaces;
 using Amma.Infrastructure.Data.Repository;
 using Microsoft.EntityFrameworkCore;
+using AutoMapper;
+using System.Reflection;
+using Amma.Api.AutoMapper.Mapper;
 
 namespace Amma.Api
 {
@@ -37,6 +40,8 @@ namespace Amma.Api
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Amma.Api", Version = "v1" });
             });
+
+             services.AddAutoMapper(new Assembly[] { typeof(AutoMapperProfile).GetTypeInfo().Assembly });
             
             //DB
             string stringConnection = "Server=localhost;Database=Amma;Trusted_Connection=True;";

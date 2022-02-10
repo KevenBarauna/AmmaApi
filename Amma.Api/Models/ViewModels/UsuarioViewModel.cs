@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Amma.Core.Domain.Entities;
 
-namespace Amma.Core.Domain.ViewModels
+namespace Amma.Api.ViewModels
 {
     public class UsuarioViewModel
     {

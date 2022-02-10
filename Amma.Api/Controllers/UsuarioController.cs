@@ -7,6 +7,8 @@ using Amma.Business.Service.Interfaces;
 using Amma.Core.Domain.Entities;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using AutoMapper;
+using Amma.Api.ViewModels;
 
 namespace Amma.Api.Controllers
 {
@@ -15,19 +17,22 @@ namespace Amma.Api.Controllers
     {
         private readonly ILogger<UsuarioController> _logger;
         private readonly IUsuarioService _usuarioService;
+        private readonly IMapper _mapper;
 
-        public UsuarioController(ILogger<UsuarioController> logger, IUsuarioService usuarioService)
+        public UsuarioController(ILogger<UsuarioController> logger, IMapper mapper, IUsuarioService usuarioService)
         {
             _logger = logger;
+            _mapper = mapper;
             _usuarioService = usuarioService;
         }
 
         [HttpGet]
-        [Route("TesteUsuario")]
-        public List<Usuario> GetAllUsuarios()
+        [Route("BuscarTodosUsuarios")]
+        public List<UsuarioViewModel> GetAllUsuarios()
         {
             _logger.LogInformation("#### UsuarioController - GetAllUsuarios ####");
-            return _usuarioService.GetAllUsuarios();
+            return _mapper.Map<List<UsuarioViewModel>>(_usuarioService.GetAllUsuarios());
+            // return _usuarioService.GetAllUsuarios();
         }   
 
         [HttpPost]
