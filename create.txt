@@ -15,8 +15,7 @@ $ dotnet sln add Amma.Tests
 
 $ cd Amma.Api/
 $ dotnet add package Microsoft.EntityFrameworkCore --version 3.1.10
-$ dotnet add package Microsoft.EntityFrameworkCore.SqlServer
-
+$ dotnet add package Microsoft.EntityFrameworkCore.SqlServer -v 3.1.10
 $ dotnet add reference ../Amma.Core/Amma.Core.csproj
 $ dotnet add reference ../Amma.Business/Amma.Business.csproj
 

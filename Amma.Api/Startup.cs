@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Amma.Business.Service;
+using Amma.Business.Service.Interfaces;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -11,6 +13,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using Amma.Infrastructure.Interfaces;
+using Amma.Infrastructure.Data.Repository;
+using Microsoft.EntityFrameworkCore;
 
 namespace Amma.Api
 {
@@ -32,6 +37,16 @@ namespace Amma.Api
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Amma.Api", Version = "v1" });
             });
+            
+            //DB
+            string stringConnection = "Server=localhost;Database=Amma;Trusted_Connection=True;";
+            services.AddDbContext<Contexto>((options) => options.UseSqlServer(stringConnection));
+
+            // SERVICE
+            services.AddScoped<IUsuarioService, UsuarioService>();
+
+            // REPOSITORY
+            services.AddScoped<IUsuarioRepository, UsuarioRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

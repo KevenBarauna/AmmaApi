@@ -1,0 +1,17 @@
+CREATE TABLE usuario
+(
+[id] INT NOT NULL PRIMARY KEY IDENTITY, 
+[nome] VARCHAR(40) NOT NULL,
+[senha] VARCHAR(30) NOT NULL,
+[email] VARCHAR(35),
+[cargo] VARCHAR(35),
+[codAvatar] INT NOT NULL,
+[idPermissao] INT NOT NULL,
+FOREIGN KEY (idPermissao) REFERENCES permissao(id)
+)
+
+CREATE TABLE permissao
+(
+[id] INT NOT NULL PRIMARY KEY IDENTITY, 
+[descricao] VARCHAR(15) NOT NULL, 
+)

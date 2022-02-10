@@ -5883,6 +5883,8 @@
     "net5.0": [
       "Amma.Business >= 1.0.0",
       "Amma.Core >= 1.0.0",
+      "Microsoft.EntityFrameworkCore >= 3.1.10",
+      "Microsoft.EntityFrameworkCore.SqlServer >= 3.1.10",
       "Swashbuckle.AspNetCore >= 5.6.3"
     ]
   },
@@ -5930,6 +5932,14 @@
       "net5.0": {
         "targetAlias": "net5.0",
         "dependencies": {
+          "Microsoft.EntityFrameworkCore": {
+            "target": "Package",
+            "version": "[3.1.10, )"
+          },
+          "Microsoft.EntityFrameworkCore.SqlServer": {
+            "target": "Package",
+            "version": "[3.1.10, )"
+          },
           "Swashbuckle.AspNetCore": {
             "target": "Package",
             "version": "[5.6.3, )"
