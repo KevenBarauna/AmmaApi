@@ -1,0 +1,51 @@
+CREATE TABLE usuario
+(
+[id] INT NOT NULL PRIMARY KEY IDENTITY, 
+[nome] VARCHAR(40) NOT NULL,
+[senha] VARCHAR(30) NOT NULL,
+[email] VARCHAR(35),
+[cargo] VARCHAR(35),
+[idAvatar] INT NOT NULL,
+[idPermissao] INT NOT NULL,
+)
+
+CREATE TABLE sugestoes
+(
+[id] INT NOT NULL PRIMARY KEY IDENTITY, 
+[idUsuario] INT NOT NULL, 
+[idCategoria] INT NOT NULL, 
+[idStatus] INT NOT NULL, 
+[anonimo] VARCHAR(1)DEFAULT 'N',
+[titulo] VARCHAR(30) NOT NULL, 
+[descricao] VARCHAR(150) NOT NULL, 
+[quantidadeVotos] INT NOT NULL, 
+[data] DATE,
+[notificacao] VARCHAR(1)DEFAULT 'N',
+[justificativa] VARCHAR(100), 
+)
+
+CREATE TABLE status
+(
+[id] INT NOT NULL PRIMARY KEY IDENTITY, 
+[descricao] VARCHAR(20) NOT NULL, 
+)
+
+CREATE TABLE categoria
+(
+[id] INT NOT NULL PRIMARY KEY IDENTITY, 
+[descricao] VARCHAR(10) NOT NULL, 
+)
+
+CREATE TABLE permissao
+(
+[id] INT NOT NULL PRIMARY KEY IDENTITY, 
+[descricao] VARCHAR(15) NOT NULL, 
+)
+
+CREATE TABLE usuario_votos
+(
+[id] INT NOT NULL PRIMARY KEY IDENTITY, 
+[idUsuario] INT NOT NULL, 
+[idSugestao] INT NOT NULL, 
+)
+

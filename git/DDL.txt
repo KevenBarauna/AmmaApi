@@ -1,0 +1,91 @@
+CREATE TABLE [Usuario] (
+	id integer NOT NULL,
+	nome string(40) NOT NULL,
+	senha string(30) NOT NULL,
+	email string(35),
+	cargo string(35),
+	idAvatar integer NOT NULL,
+	idTema integer NOT NULL,
+  CONSTRAINT [PK_USUARIO] PRIMARY KEY CLUSTERED
+  (
+  [id] ASC
+  ) WITH (IGNORE_DUP_KEY = OFF)
+
+)
+GO
+CREATE TABLE [Ticket] (
+	id integer NOT NULL,
+	titulo string NOT NULL,
+  CONSTRAINT [PK_TICKET] PRIMARY KEY CLUSTERED
+  (
+  [id] ASC
+  ) WITH (IGNORE_DUP_KEY = OFF)
+
+)
+GO
+CREATE TABLE [Sugestao] (
+	id integer NOT NULL,
+	idTipo integer NOT NULL,
+	idUsuario integer NOT NULL,
+	data date NOT NULL,
+	titulo string(60) NOT NULL,
+	descricao string(115) NOT NULL,
+	votos integer NOT NULL,
+	idStatus integer NOT NULL,
+  CONSTRAINT [PK_SUGESTAO] PRIMARY KEY CLUSTERED
+  (
+  [id] ASC
+  ) WITH (IGNORE_DUP_KEY = OFF)
+
+)
+GO
+CREATE TABLE [Status] (
+	id integer NOT NULL,
+	tipo string NOT NULL,
+  CONSTRAINT [PK_STATUS] PRIMARY KEY CLUSTERED
+  (
+  [id] ASC
+  ) WITH (IGNORE_DUP_KEY = OFF)
+
+)
+GO
+CREATE TABLE [Usuario_votos] (
+	id integer NOT NULL,
+	idUsuario integer NOT NULL,
+	idTicket integer NOT NULL,
+  CONSTRAINT [PK_USUARIO_VOTOS] PRIMARY KEY CLUSTERED
+  (
+  [id] ASC
+  ) WITH (IGNORE_DUP_KEY = OFF)
+
+)
+GO
+
+
+ALTER TABLE [Sugestao] WITH CHECK ADD CONSTRAINT [Sugestao_fk0] FOREIGN KEY ([idTipo]) REFERENCES [Ticket]([id])
+ON UPDATE CASCADE
+GO
+ALTER TABLE [Sugestao] CHECK CONSTRAINT [Sugestao_fk0]
+GO
+ALTER TABLE [Sugestao] WITH CHECK ADD CONSTRAINT [Sugestao_fk1] FOREIGN KEY ([idUsuario]) REFERENCES [Usuario]([id])
+ON UPDATE CASCADE
+GO
+ALTER TABLE [Sugestao] CHECK CONSTRAINT [Sugestao_fk1]
+GO
+ALTER TABLE [Sugestao] WITH CHECK ADD CONSTRAINT [Sugestao_fk2] FOREIGN KEY ([idStatus]) REFERENCES [Status]([id])
+ON UPDATE CASCADE
+GO
+ALTER TABLE [Sugestao] CHECK CONSTRAINT [Sugestao_fk2]
+GO
+
+
+ALTER TABLE [Usuario_votos] WITH CHECK ADD CONSTRAINT [Usuario_votos_fk0] FOREIGN KEY ([idUsuario]) REFERENCES [Usuario]([id])
+ON UPDATE CASCADE
+GO
+ALTER TABLE [Usuario_votos] CHECK CONSTRAINT [Usuario_votos_fk0]
+GO
+ALTER TABLE [Usuario_votos] WITH CHECK ADD CONSTRAINT [Usuario_votos_fk1] FOREIGN KEY ([idTicket]) REFERENCES [Sugestao]([id])
+ON UPDATE CASCADE
+GO
+ALTER TABLE [Usuario_votos] CHECK CONSTRAINT [Usuario_votos_fk1]
+GO

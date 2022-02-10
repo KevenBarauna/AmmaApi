@@ -1,0 +1,253 @@
+{
+  "format": 1,
+  "restore": {
+    "G:\\Work\\PROJETO\\_PESSOAL\\AMMA\\Amma.Api\\Amma.Api.csproj": {}
+  },
+  "projects": {
+    "G:\\Work\\PROJETO\\_PESSOAL\\AMMA\\Amma.Api\\Amma.Api.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "G:\\Work\\PROJETO\\_PESSOAL\\AMMA\\Amma.Api\\Amma.Api.csproj",
+        "projectName": "Amma.Api",
+        "projectPath": "G:\\Work\\PROJETO\\_PESSOAL\\AMMA\\Amma.Api\\Amma.Api.csproj",
+        "packagesPath": "C:\\Users\\keven\\.nuget\\packages\\",
+        "outputPath": "G:\\Work\\PROJETO\\_PESSOAL\\AMMA\\Amma.Api\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\keven\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {
+              "G:\\Work\\PROJETO\\_PESSOAL\\AMMA\\Amma.Business\\Amma.Business.csproj": {
+                "projectPath": "G:\\Work\\PROJETO\\_PESSOAL\\AMMA\\Amma.Business\\Amma.Business.csproj"
+              },
+              "G:\\Work\\PROJETO\\_PESSOAL\\AMMA\\Amma.Core\\Amma.Core.csproj": {
+                "projectPath": "G:\\Work\\PROJETO\\_PESSOAL\\AMMA\\Amma.Core\\Amma.Core.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "dependencies": {
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[5.6.3, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.405\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "G:\\Work\\PROJETO\\_PESSOAL\\AMMA\\Amma.Business\\Amma.Business.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "G:\\Work\\PROJETO\\_PESSOAL\\AMMA\\Amma.Business\\Amma.Business.csproj",
+        "projectName": "Amma.Business",
+        "projectPath": "G:\\Work\\PROJETO\\_PESSOAL\\AMMA\\Amma.Business\\Amma.Business.csproj",
+        "packagesPath": "C:\\Users\\keven\\.nuget\\packages\\",
+        "outputPath": "G:\\Work\\PROJETO\\_PESSOAL\\AMMA\\Amma.Business\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\keven\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {
+              "G:\\Work\\PROJETO\\_PESSOAL\\AMMA\\Amma.Core\\Amma.Core.csproj": {
+                "projectPath": "G:\\Work\\PROJETO\\_PESSOAL\\AMMA\\Amma.Core\\Amma.Core.csproj"
+              },
+              "G:\\Work\\PROJETO\\_PESSOAL\\AMMA\\Amma.Infrastructure\\Amma.Infrastructure.csproj": {
+                "projectPath": "G:\\Work\\PROJETO\\_PESSOAL\\AMMA\\Amma.Infrastructure\\Amma.Infrastructure.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.405\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "G:\\Work\\PROJETO\\_PESSOAL\\AMMA\\Amma.Core\\Amma.Core.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "G:\\Work\\PROJETO\\_PESSOAL\\AMMA\\Amma.Core\\Amma.Core.csproj",
+        "projectName": "Amma.Core",
+        "projectPath": "G:\\Work\\PROJETO\\_PESSOAL\\AMMA\\Amma.Core\\Amma.Core.csproj",
+        "packagesPath": "C:\\Users\\keven\\.nuget\\packages\\",
+        "outputPath": "G:\\Work\\PROJETO\\_PESSOAL\\AMMA\\Amma.Core\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\keven\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.405\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "G:\\Work\\PROJETO\\_PESSOAL\\AMMA\\Amma.Infrastructure\\Amma.Infrastructure.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "G:\\Work\\PROJETO\\_PESSOAL\\AMMA\\Amma.Infrastructure\\Amma.Infrastructure.csproj",
+        "projectName": "Amma.Infrastructure",
+        "projectPath": "G:\\Work\\PROJETO\\_PESSOAL\\AMMA\\Amma.Infrastructure\\Amma.Infrastructure.csproj",
+        "packagesPath": "C:\\Users\\keven\\.nuget\\packages\\",
+        "outputPath": "G:\\Work\\PROJETO\\_PESSOAL\\AMMA\\Amma.Infrastructure\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\keven\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {
+              "G:\\Work\\PROJETO\\_PESSOAL\\AMMA\\Amma.Core\\Amma.Core.csproj": {
+                "projectPath": "G:\\Work\\PROJETO\\_PESSOAL\\AMMA\\Amma.Core\\Amma.Core.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[3.1.10, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[3.1.10, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.405\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

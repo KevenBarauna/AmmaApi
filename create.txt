@@ -1,0 +1,38 @@
+$ dotnet new webapi -o Amma.Api
+$ dotnet new classlib -o Amma.Core
+$ dotnet new classlib -o Amma.Business
+$ dotnet new classlib -o Amma.Infrastructure
+$ dotnet new nunit -o Amma.Tests
+
+$ dotnet new sln
+
+$ dotnet sln add Amma.Api
+$ dotnet sln add Amma.Business
+$ dotnet sln add Amma.Core
+$ dotnet sln add Amma.Infrastructure
+$ dotnet sln add Amma.Tests
+
+
+$ cd Amma.Api/
+$ dotnet add package Microsoft.EntityFrameworkCore --version 3.1.10
+$ dotnet add package Microsoft.EntityFrameworkCore.SqlServer
+
+$ dotnet add reference ../Amma.Core/Amma.Core.csproj
+$ dotnet add reference ../Amma.Business/Amma.Business.csproj
+
+$ cd ..
+$ cd Amma.Business/
+$ dotnet add reference ../Amma.Core/Amma.Core.csproj
+$ dotnet add reference ../Amma.Infrastructure/Amma.Infrastructure.csproj
+
+
+$ cd ..
+$ cd Amma.Infrastructure/
+$ dotnet add reference ../Amma.Core/Amma.Core.csproj
+$ dotnet add package Microsoft.EntityFrameworkCore --version 3.1.10
+$ dotnet add package Microsoft.EntityFrameworkCore.SqlServer -v 3.1.10
+
+$ cd ..
+$ dotnet clean
+$ dotnet build
+$ dotnet test

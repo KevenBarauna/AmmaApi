@@ -1,0 +1,17 @@
+G:\Work\PROJETO\_PESSOAL\AMMA\Amma.Business\bin\Debug\net5.0\Amma.Business.deps.json
+G:\Work\PROJETO\_PESSOAL\AMMA\Amma.Business\bin\Debug\net5.0\Amma.Business.dll
+G:\Work\PROJETO\_PESSOAL\AMMA\Amma.Business\bin\Debug\net5.0\ref\Amma.Business.dll
+G:\Work\PROJETO\_PESSOAL\AMMA\Amma.Business\bin\Debug\net5.0\Amma.Business.pdb
+G:\Work\PROJETO\_PESSOAL\AMMA\Amma.Business\bin\Debug\net5.0\Amma.Core.dll
+G:\Work\PROJETO\_PESSOAL\AMMA\Amma.Business\bin\Debug\net5.0\Amma.Infrastructure.dll
+G:\Work\PROJETO\_PESSOAL\AMMA\Amma.Business\bin\Debug\net5.0\Amma.Core.pdb
+G:\Work\PROJETO\_PESSOAL\AMMA\Amma.Business\bin\Debug\net5.0\Amma.Infrastructure.pdb
+G:\Work\PROJETO\_PESSOAL\AMMA\Amma.Business\obj\Debug\net5.0\Amma.Business.csproj.AssemblyReference.cache
+G:\Work\PROJETO\_PESSOAL\AMMA\Amma.Business\obj\Debug\net5.0\Amma.Business.GeneratedMSBuildEditorConfig.editorconfig
+G:\Work\PROJETO\_PESSOAL\AMMA\Amma.Business\obj\Debug\net5.0\Amma.Business.AssemblyInfoInputs.cache
+G:\Work\PROJETO\_PESSOAL\AMMA\Amma.Business\obj\Debug\net5.0\Amma.Business.AssemblyInfo.cs
+G:\Work\PROJETO\_PESSOAL\AMMA\Amma.Business\obj\Debug\net5.0\Amma.Business.csproj.CoreCompileInputs.cache
+G:\Work\PROJETO\_PESSOAL\AMMA\Amma.Business\obj\Debug\net5.0\Amma.Business.csproj.CopyComplete
+G:\Work\PROJETO\_PESSOAL\AMMA\Amma.Business\obj\Debug\net5.0\Amma.Business.dll
+G:\Work\PROJETO\_PESSOAL\AMMA\Amma.Business\obj\Debug\net5.0\ref\Amma.Business.dll
+G:\Work\PROJETO\_PESSOAL\AMMA\Amma.Business\obj\Debug\net5.0\Amma.Business.pdb
