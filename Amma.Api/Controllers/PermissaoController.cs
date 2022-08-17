@@ -17,12 +17,10 @@ namespace Amma.Api.Controllers
 
         private readonly ILogger<PermissaoController> _logger;
         private readonly IPermissaoService _permissaoService;
-        private readonly IMapper _mapper;
 
-        public PermissaoController(ILogger<PermissaoController> logger, IMapper mapper, IPermissaoService permissaoService)
+        public PermissaoController(ILogger<PermissaoController> logger, IPermissaoService permissaoService)
         {
             _logger = logger;
-            _mapper = mapper;
             _permissaoService = permissaoService;
         }
 
