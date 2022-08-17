@@ -3,11 +3,15 @@ INSERT INTO categoria (descricao) VALUES ('Manter')
 INSERT INTO categoria (descricao) VALUES ('Melhorar')
 INSERT INTO categoria (descricao) VALUES ('Abandonar')
 
-INSERT INTO status (descricao) VALUES ('Aguardando análise')
-INSERT INTO status (descricao) VALUES ('Solucionado')
-INSERT INTO status (descricao) VALUES ('Em análise')
-INSERT INTO status (descricao) VALUES ('Não estamos prontos')
-INSERT INTO status (descricao) VALUES ('Cancelado')
+
+INSERT INTO status (valor,descricao) VALUES ('Aguardando análise','A solicitação foi enviada e está na fila para ser análisada pela Solutis')
+INSERT INTO status (valor,descricao) VALUES ('Em Avaliação','A solicitação está em avaliação')
+INSERT INTO status (valor,descricao) VALUES ('Amadurecer','A solicitação foi análisada e ainda não estamos prontos para viabilizar')
+INSERT INTO status (valor,descricao) VALUES ('Implantado','A solicitação foi aprovada e já está implantada')
+INSERT INTO status (valor,descricao) VALUES ('Aprovado','A solicitação foi aprovada e está em processo de implantação')
+INSERT INTO status (valor,descricao) VALUES ('Esclarecer','A solicitação foi recebida, porém gostaríamos que esclareça para melhor avaliação')
+INSERT INTO status (valor,descricao) VALUES ('Cancelado','A solicitação foi recebida, e cancelada pela Solutis')
+
 
 INSERT INTO permissao(descricao) VALUES ('Padrao')
 INSERT INTO permissao(descricao) VALUES ('Administrador')

@@ -8,6 +8,7 @@ namespace Amma.Core.Domain.Entities
 {
     public class Status: BaseEntity
     {
+        public string Valor { get; set; }
         public string Descricao { get; set; }
     }
 }

@@ -12,6 +12,7 @@ namespace Amma.Infrastructure.Data.Repository
         public DbSet<Usuario> usuario {get; set;}
         public DbSet<Permissao> permissao {get; set;}
         public DbSet<Categoria> categoria { get; set; }
+        public DbSet<Status> status { get; set; }
 
         public Contexto(DbContextOptions<Contexto> options) : base(options)
         {
