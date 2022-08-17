@@ -19,6 +19,8 @@ using Microsoft.EntityFrameworkCore;
 using AutoMapper;
 using System.Reflection;
 using Amma.Api.AutoMapper.Mapper;
+using Amma.Business.Validations;
+using Amma.Business.Validations.Usuario;
 
 namespace Amma.Api
 {

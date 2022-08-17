@@ -10,6 +10,8 @@ namespace Amma.Infrastructure.Interfaces
     {
         public IQueryable<Usuario> FindAll();
         public Usuario Create(Usuario usuario);
+        public Usuario Update(Usuario usuario);
         public Usuario GetById(long id);
+        public Usuario Delete(Usuario usuario);
     }
 }

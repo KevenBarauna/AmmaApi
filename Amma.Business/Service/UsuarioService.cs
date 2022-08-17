@@ -3,36 +3,80 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Amma.Business.Service.Interfaces;
+using Amma.Business.Validations.Usuario;
 using Amma.Core.Domain.Entities;
+using Amma.Core.Domain.Error;
 using Amma.Infrastructure.Interfaces;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 
 namespace Amma.Business.Service
 {
     public class UsuarioService: IUsuarioService
     {
-        private readonly IUsuarioRepository _usuarioRepository ;
+        private readonly ILogger<UsuarioService> _logger;
+        private readonly IUsuarioRepository _usuarioRepository;
 
-        public UsuarioService(IUsuarioRepository usuarioRepository )
+        private UsuarioValidations _usuarioValidations = new UsuarioValidations();
+
+        public UsuarioService(IUsuarioRepository usuarioRepository, ILogger<UsuarioService> logger)
         {
-            _usuarioRepository  = usuarioRepository ;
+            _logger = logger;
+            _usuarioRepository = usuarioRepository;
+        }
+
+        private void EscreverLog(string nomeFuncao, Usuario? usuario)
+        {
+            _logger.LogInformation($"### UsuarioService - ${nomeFuncao} - {usuario?.Id} - {usuario?.Nome} - {usuario?.Email} - {usuario?.Senha} - {usuario?.Cargo} - {usuario?.IdPermissao} - {usuario?.CodAvatar}");
+        }
+
+        private void EscreverErro(string nomeFuncao, string mensagem)
+        {
+            _logger.LogError($"### UsuarioService - ${nomeFuncao} - {mensagem}");
         }
 
         public Usuario CreateUsuario(Usuario usuario)
         {
-            // _logger.LogInformation("#### UsuarioService - CreateUsuario ####");
+            EscreverLog("CreateUsuario", usuario);
+            List<ErrorField> errosList = _usuarioValidations.ValidarNovoUsuario(usuario);
+            if(errosList.Count > 0)
+            {
+                EscreverErro($"CreateUsuario",$"Quantidade de erros na validação: {errosList.Count}");
+                throw new Exception(errosList[0].Descricao);
+            }
             return _usuarioRepository.Create(usuario);
+        }
+
+        public Usuario EditarUsuario(Usuario usuario)
+        {
+            EscreverLog("EditarUsuario", usuario);
+            List<ErrorField> errosList = _usuarioValidations.ValidarNovoUsuario(usuario);
+            if (errosList.Count > 0)
+            {
+                EscreverErro($"CreateUsuario", $"Quantidade de erros na validação: {errosList.Count}");
+                throw new Exception(errosList[0].Descricao);
+            }
+            return _usuarioRepository.Update(usuario);
+        }
+
+        public Usuario GetUsuario(int idUsuario)
+        {
+            EscreverLog("GetUsuario", null);
+            return _usuarioRepository.GetById(idUsuario);
         }
 
         public List<Usuario> GetAllUsuarios()
         {
-            // _logger.LogInformation("#### UsuarioService - GetAllUsuarios ####");
-
+            EscreverLog("GetAllUsuarios", null);
             var usuarios = _usuarioRepository.FindAll();
-
-            // _logger.LogInformation($"#### UsuarioService - GetAllUsuarios - Find: {usuarios?.Count} Usuários ####");
-
             return usuarios.Include(x => x.permissao).ToList();
+        }
+
+        public Usuario DeletarUsuario(int idUsuario)
+        {
+            EscreverLog("DeletarUsuario", null);
+            Usuario usuario = GetUsuario(idUsuario);
+            return _usuarioRepository.Delete(usuario);
         }
     }
 }

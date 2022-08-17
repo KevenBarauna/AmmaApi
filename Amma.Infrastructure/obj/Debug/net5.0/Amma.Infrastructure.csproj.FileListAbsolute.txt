@@ -1,6 +1,5 @@
 G:\Work\PROJETO\_PESSOAL\AMMA\Amma.Infrastructure\bin\Debug\net5.0\Amma.Infrastructure.deps.json
 G:\Work\PROJETO\_PESSOAL\AMMA\Amma.Infrastructure\bin\Debug\net5.0\Amma.Infrastructure.dll
-G:\Work\PROJETO\_PESSOAL\AMMA\Amma.Infrastructure\bin\Debug\net5.0\ref\Amma.Infrastructure.dll
 G:\Work\PROJETO\_PESSOAL\AMMA\Amma.Infrastructure\bin\Debug\net5.0\Amma.Infrastructure.pdb
 G:\Work\PROJETO\_PESSOAL\AMMA\Amma.Infrastructure\bin\Debug\net5.0\Amma.Core.dll
 G:\Work\PROJETO\_PESSOAL\AMMA\Amma.Infrastructure\bin\Debug\net5.0\Amma.Core.pdb
@@ -13,3 +12,4 @@ G:\Work\PROJETO\_PESSOAL\AMMA\Amma.Infrastructure\obj\Debug\net5.0\Amma.Infrastr
 G:\Work\PROJETO\_PESSOAL\AMMA\Amma.Infrastructure\obj\Debug\net5.0\Amma.Infrastructure.dll
 G:\Work\PROJETO\_PESSOAL\AMMA\Amma.Infrastructure\obj\Debug\net5.0\ref\Amma.Infrastructure.dll
 G:\Work\PROJETO\_PESSOAL\AMMA\Amma.Infrastructure\obj\Debug\net5.0\Amma.Infrastructure.pdb
+G:\Work\PROJETO\_PESSOAL\AMMA\Amma.Infrastructure\obj\Debug\net5.0\refint\Amma.Infrastructure.dll

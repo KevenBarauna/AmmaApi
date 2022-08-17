@@ -5,7 +5,6 @@ G:\Work\PROJETO\_PESSOAL\AMMA\Amma.Api\bin\Debug\net5.0\Amma.Api.deps.json
 G:\Work\PROJETO\_PESSOAL\AMMA\Amma.Api\bin\Debug\net5.0\Amma.Api.runtimeconfig.json
 G:\Work\PROJETO\_PESSOAL\AMMA\Amma.Api\bin\Debug\net5.0\Amma.Api.runtimeconfig.dev.json
 G:\Work\PROJETO\_PESSOAL\AMMA\Amma.Api\bin\Debug\net5.0\Amma.Api.dll
-G:\Work\PROJETO\_PESSOAL\AMMA\Amma.Api\bin\Debug\net5.0\ref\Amma.Api.dll
 G:\Work\PROJETO\_PESSOAL\AMMA\Amma.Api\bin\Debug\net5.0\Amma.Api.pdb
 G:\Work\PROJETO\_PESSOAL\AMMA\Amma.Api\bin\Debug\net5.0\AutoMapper.dll
 G:\Work\PROJETO\_PESSOAL\AMMA\Amma.Api\bin\Debug\net5.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
@@ -57,7 +56,6 @@ G:\Work\PROJETO\_PESSOAL\AMMA\Amma.Api\obj\Debug\net5.0\Amma.Api.csproj.CoreComp
 G:\Work\PROJETO\_PESSOAL\AMMA\Amma.Api\obj\Debug\net5.0\Amma.Api.MvcApplicationPartsAssemblyInfo.cs
 G:\Work\PROJETO\_PESSOAL\AMMA\Amma.Api\obj\Debug\net5.0\Amma.Api.MvcApplicationPartsAssemblyInfo.cache
 G:\Work\PROJETO\_PESSOAL\AMMA\Amma.Api\obj\Debug\net5.0\staticwebassets\Amma.Api.StaticWebAssets.Manifest.cache
-G:\Work\PROJETO\_PESSOAL\AMMA\Amma.Api\obj\Debug\net5.0\staticwebassets\Amma.Api.StaticWebAssets.xml
 G:\Work\PROJETO\_PESSOAL\AMMA\Amma.Api\obj\Debug\net5.0\scopedcss\bundle\Amma.Api.styles.css
 G:\Work\PROJETO\_PESSOAL\AMMA\Amma.Api\obj\Debug\net5.0\Amma.Api.RazorTargetAssemblyInfo.cache
 G:\Work\PROJETO\_PESSOAL\AMMA\Amma.Api\obj\Debug\net5.0\Amma.Api.csproj.CopyComplete
@@ -65,3 +63,4 @@ G:\Work\PROJETO\_PESSOAL\AMMA\Amma.Api\obj\Debug\net5.0\Amma.Api.dll
 G:\Work\PROJETO\_PESSOAL\AMMA\Amma.Api\obj\Debug\net5.0\ref\Amma.Api.dll
 G:\Work\PROJETO\_PESSOAL\AMMA\Amma.Api\obj\Debug\net5.0\Amma.Api.pdb
 G:\Work\PROJETO\_PESSOAL\AMMA\Amma.Api\obj\Debug\net5.0\Amma.Api.genruntimeconfig.cache
+G:\Work\PROJETO\_PESSOAL\AMMA\Amma.Api\obj\Debug\net5.0\refint\Amma.Api.dll

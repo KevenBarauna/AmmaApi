@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "IZiOYn4xJp9U7de05z3SRodais8gVXbDppJQ2BaAryM1swCL81p4a3qjLJoe5ij+buYVMyr0u/F+jlYv2RBdVQ==",
+  "dgSpecHash": "uhddSR86kl2NKwd+F0SfqfxAwbnmWO7Y9kW//10bxiPTS4bjQIcVTSpE5ab0lUGVFICiUHqgeboIQDxEerWm0A==",
   "success": true,
   "projectFilePath": "G:\\Work\\PROJETO\\_PESSOAL\\AMMA\\Amma.Core\\Amma.Core.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\keven\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512"
+  ],
   "logs": []
 }

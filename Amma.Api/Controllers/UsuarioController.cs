@@ -1,14 +1,11 @@
-using System;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
 using Amma.Business.Service.Interfaces;
 using Amma.Core.Domain.Entities;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using AutoMapper;
 using Amma.Api.ViewModels;
+using Amma.Api.Models.DTO;
 
 namespace Amma.Api.Controllers
 {
@@ -26,22 +23,52 @@ namespace Amma.Api.Controllers
             _usuarioService = usuarioService;
         }
 
+        private void EscreverLog(string nomeFuncao, Usuario? usuario)
+        {
+            _logger.LogInformation($"### UsuarioController - ${nomeFuncao} - {usuario?.Id} - {usuario?.Nome} - {usuario?.Email} - {usuario?.Senha} - {usuario?.Cargo} - {usuario?.IdPermissao} - {usuario?.CodAvatar}");
+        }
+
         [HttpGet]
         [Route("BuscarTodosUsuarios")]
         public List<UsuarioViewModel> GetAllUsuarios()
         {
-            _logger.LogInformation("#### UsuarioController - GetAllUsuarios ####");
+            EscreverLog("GetAllUsuarios", null);
             return _mapper.Map<List<UsuarioViewModel>>(_usuarioService.GetAllUsuarios());
-            // return _usuarioService.GetAllUsuarios();
         }   
 
         [HttpPost]
         [Route("CriarUsuario")]
-        public Usuario CreateUsuario([FromBody] Usuario usuario)
+        public Usuario CreateUsuario([FromBody] UsuarioCadastrarDto usuario)
         {
-            _logger.LogInformation("#### UsuarioController - CreateUsuario ####");
-            return _usuarioService.CreateUsuario(usuario);
-        }  
+            var usuarioMapper = _mapper.Map<Usuario>(usuario);
+            EscreverLog("CreateUsuario", usuarioMapper);
+            return _usuarioService.CreateUsuario(usuarioMapper);
+        }
+
+        [HttpPut]
+        [Route("EditarUsuario")]
+        public Usuario EditarUsuario([FromBody] UsuarioCadastrarDto usuario)
+        {
+            var usuarioMapper = _mapper.Map<Usuario>(usuario);
+            EscreverLog("EditarUsuario", usuarioMapper);
+            return _usuarioService.EditarUsuario(usuarioMapper);
+        }
+
+        [HttpGet]
+        [Route("BuscarUsuario")]
+        public Usuario BuscarUsuario([FromQuery] int idUsuario)
+        {
+            EscreverLog($"BuscarUsuario id: {idUsuario}", null);
+            return _usuarioService.GetUsuario(idUsuario);
+        }
+
+        [HttpDelete]
+        [Route("Deletarsuario")]
+        public Usuario DeletarUsuario([FromQuery] int idUsuario)
+        {
+            EscreverLog($"DeletarUsuario id: {idUsuario}", null);
+            return _usuarioService.DeletarUsuario(idUsuario);
+        }
 
     }
 }

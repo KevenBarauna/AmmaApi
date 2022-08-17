@@ -5,6 +5,10 @@
     <ProjectReference Include="..\Amma.Infrastructure\Amma.Infrastructure.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Validations\Base\" />
+  </ItemGroup>
+
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
