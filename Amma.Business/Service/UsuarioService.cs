@@ -17,8 +17,6 @@ namespace Amma.Business.Service
         private readonly ILogger<UsuarioService> _logger;
         private readonly IUsuarioRepository _usuarioRepository;
 
-        private UsuarioValidations _usuarioValidations = new UsuarioValidations();
-
         public UsuarioService(IUsuarioRepository usuarioRepository, ILogger<UsuarioService> logger)
         {
             _logger = logger;
@@ -38,23 +36,34 @@ namespace Amma.Business.Service
         public Usuario CreateUsuario(Usuario usuario)
         {
             EscreverLog("CreateUsuario", usuario);
-            List<ErrorField> errosList = _usuarioValidations.ValidarNovoUsuario(usuario);
-            if(errosList.Count > 0)
+            UsuarioValidation validator = new UsuarioValidation();
+            var result = validator.Validate(usuario);
+            if (!result.IsValid)
             {
-                EscreverErro($"CreateUsuario",$"Quantidade de erros na validação: {errosList.Count}");
-                throw new Exception(errosList[0].Descricao);
+                foreach (var failure in result.Errors)
+                {
+                    Console.WriteLine("Property " + failure.PropertyName + " failed validation. Error was: " + failure.ErrorMessage);
+                    EscreverErro($"CreateUsuario", $"Quantidade de erros na validação");
+                    throw new Exception("Deu erro");
+                }
             }
+
             return _usuarioRepository.Create(usuario);
         }
 
         public Usuario EditarUsuario(Usuario usuario)
         {
             EscreverLog("EditarUsuario", usuario);
-            List<ErrorField> errosList = _usuarioValidations.ValidarNovoUsuario(usuario);
-            if (errosList.Count > 0)
+            UsuarioValidation validator = new UsuarioValidation();
+            var result = validator.Validate(usuario);
+            if (!result.IsValid)
             {
-                EscreverErro($"CreateUsuario", $"Quantidade de erros na validação: {errosList.Count}");
-                throw new Exception(errosList[0].Descricao);
+                foreach (var failure in result.Errors)
+                {
+                    Console.WriteLine("Property " + failure.PropertyName + " failed validation. Error was: " + failure.ErrorMessage);
+                    EscreverErro($"CreateUsuario", $"Quantidade de erros na validação");
+                    throw new Exception("Deu erro");
+                }
             }
             return _usuarioRepository.Update(usuario);
         }

@@ -1,67 +1,29 @@
-﻿using Amma.Core.Domain.Constants;
-using Amma.Core.Domain.Error;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Message = Amma.Core.Domain.Constants.Message;
+﻿using FluentValidation;
 using Entities = Amma.Core.Domain.Entities;
 
 namespace Amma.Business.Validations.Sugestao
 {
-    public class SugestaoValidations
+    public class SugestaoValidations : AbstractValidator<Entities.Sugestao>
     {
-
-        public List<ErrorField> ValidarNovaSugestao(Entities.Sugestao sugestao)
+        public SugestaoValidations()
         {
-            List<ErrorField> errosList = new List<ErrorField>();
-
-            if (String.IsNullOrEmpty(sugestao.IdUsuario.ToString()))
-            {
-                errosList.Add(new ErrorField("IdUsuario", Message.MSG_CAMPO_OBRIGATORIO_ID_USUARIO));
-            }
-            if (String.IsNullOrEmpty(sugestao.IdCategoria.ToString()))
-            {
-                errosList.Add(new ErrorField("IdCategoria", Message.MSG_CAMPO_OBRIGATORIO_ID_CATEGORIA));
-            }
-            if (String.IsNullOrEmpty(sugestao.IdStatus.ToString()))
-            {
-                errosList.Add(new ErrorField("IdStatus", Message.MSG_CAMPO_OBRIGATORIO_ID_STATUS));
-            }
-            if (String.IsNullOrEmpty(sugestao.Titulo))
-            {
-                errosList.Add(new ErrorField("Titulo", Message.MSG_CAMPO_OBRIGATORIO_TITULO));
-            }
-            if (String.IsNullOrEmpty(sugestao.Descricao))
-            {
-                errosList.Add(new ErrorField("Descricao", Message.MSG_CAMPO_OBRIGATORIO_DESCRICAO));
-            }
-
-            return errosList;
-
+            // NOVA SUGESTÃO
+            RuleFor(instance => instance).Must(i => !string.IsNullOrEmpty(i.IdUsuario.ToString())).WithMessage("IdUsuario tá em branco cara");
+            RuleFor(instance => instance).Must(i => !string.IsNullOrEmpty(i.IdCategoria.ToString())).WithMessage("IdCategoria tá em branco cara");
+            RuleFor(instance => instance).Must(i => !string.IsNullOrEmpty(i.IdStatus.ToString())).WithMessage("IdStatus tá em branco cara");
+            RuleFor(instance => instance).Must(i => !string.IsNullOrEmpty(i.Titulo)).WithMessage("Titulo tá em branco cara");
+            RuleFor(instance => instance).Must(i => !string.IsNullOrEmpty(i.Descricao)).WithMessage("Descricao tá em branco cara");
         }
+    }
 
-        public List<ErrorField> ValidarEditarSugestao(Entities.Sugestao sugestao)
+    public class SugestaoEditarValidations : AbstractValidator<Entities.Sugestao>
+    {
+        public SugestaoEditarValidations()
         {
-            List<ErrorField> errosList = new List<ErrorField>();
-
-            if (String.IsNullOrEmpty(sugestao.Id.ToString()))
-            {
-                errosList.Add(new ErrorField("Id", Message.MSG_CAMPO_OBRIGATORIO_ID));
-            }
-            if (String.IsNullOrEmpty(sugestao.IdCategoria.ToString()))
-            {
-                errosList.Add(new ErrorField("IdCategoria", Message.MSG_CAMPO_OBRIGATORIO_ID_CATEGORIA));
-            }
-            if (String.IsNullOrEmpty(sugestao.Descricao))
-            {
-                errosList.Add(new ErrorField("Descricao", Message.MSG_CAMPO_OBRIGATORIO_DESCRICAO));
-            }
-
-            return errosList;
-
+            // NOVA SUGESTÃO
+            RuleFor(instance => instance).Must(i => !string.IsNullOrEmpty(i.Id.ToString())).WithMessage("IdUsuario tá em branco cara");
+            RuleFor(instance => instance).Must(i => !string.IsNullOrEmpty(i.IdCategoria.ToString())).WithMessage("IdCategoria tá em branco cara");
+            RuleFor(instance => instance).Must(i => !string.IsNullOrEmpty(i.Descricao)).WithMessage("Descricao tá em branco cara");
         }
-
     }
 }

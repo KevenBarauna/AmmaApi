@@ -36,3 +36,14 @@ $ cd ..
 $ dotnet clean
 $ dotnet build
 $ dotnet test
+
+$ cd Amma.Api
+$ dotnet add package Microsoft.AspNetCore.Authentication
+$ dotnet add package Microsoft.AspNetCore.Authentication.JwtBearer
+$(Add NuGet)
+
+$ cd ..
+$ cd Amma.Business
+$ dotnet add package FluentValidation
+
+

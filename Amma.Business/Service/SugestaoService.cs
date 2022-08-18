@@ -20,8 +20,6 @@ namespace Amma.Business.Service
         private readonly ILogger<SugestaoService> _logger;
         private readonly ISugestaoRepository _sugestaoRepository;
 
-        private SugestaoValidations _sugestaoValidations = new SugestaoValidations();
-
         public SugestaoService(ISugestaoRepository sugestaoRepository, ILogger<SugestaoService> logger)
         {
             _logger = logger;
@@ -67,13 +65,16 @@ namespace Amma.Business.Service
         {
             EscreverLog("CreateSugestao", sugestao);
             sugestao = ConfigurarNovaSugestao(sugestao);
-            List<ErrorField> errosList = _sugestaoValidations.ValidarNovaSugestao(sugestao);
-
-            if (errosList.Count > 0)
+            SugestaoValidations validator = new SugestaoValidations();
+            var result = validator.Validate(sugestao);
+            if (!result.IsValid)
             {
-                EscreverErro("CreateSugestao", $"Quantidade de erros na validação: {errosList.Count}");
-                throw new Exception(errosList[0].Descricao);
-
+                foreach (var failure in result.Errors)
+                {
+                    Console.WriteLine("Property " + failure.PropertyName + " failed validation. Error was: " + failure.ErrorMessage);
+                    EscreverErro($"CreateSugestao", $"Quantidade de erros na validação");
+                    throw new Exception("Deu erro");
+                }
             }
 
             return _sugestaoRepository.Create(sugestao);
@@ -83,13 +84,16 @@ namespace Amma.Business.Service
         {
             EscreverLog("EditarSugestao", sugestao);
             sugestao = ConfigurarEditarSugestao(sugestao);
-            List<ErrorField> errosList = _sugestaoValidations.ValidarEditarSugestao(sugestao);
-
-            if (errosList.Count > 0)
+            SugestaoValidations validator = new SugestaoValidations();
+            var result = validator.Validate(sugestao);
+            if (!result.IsValid)
             {
-                EscreverErro("CreateSugestao", $"Quantidade de erros na validação: {errosList.Count}");
-                throw new Exception(errosList[0].Descricao);
-
+                foreach (var failure in result.Errors)
+                {
+                    Console.WriteLine("Property " + failure.PropertyName + " failed validation. Error was: " + failure.ErrorMessage);
+                    EscreverErro($"EditarSugestao", $"Quantidade de erros na validação");
+                    throw new Exception("Deu erro");
+                }
             }
 
             return _sugestaoRepository.Update(sugestao);

@@ -1,11 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "zJvF3+tZ8MGtWzVji+FZKwpjQc9dNJgZPzClQKu7nSrMBY63LRCMthGs+AvQVChWszb9geCYrmXvMf9dcf1sqg==",
+  "dgSpecHash": "48MJZcUGGj3UwkdN+ngs7lhJv9+4iNcvbSApaWpy5E0Fe/fqG2mLYytoVFaDuC5dYBH+2hj5GnaFYBvOGao/Yg==",
   "success": true,
   "projectFilePath": "G:\\Work\\PROJETO\\_PESSOAL\\AMMA\\Amma.Api\\Amma.Api.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\keven\\.nuget\\packages\\automapper\\11.0.0\\automapper.11.0.0.nupkg.sha512",
     "C:\\Users\\keven\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\11.0.0\\automapper.extensions.microsoft.dependencyinjection.11.0.0.nupkg.sha512",
+    "C:\\Users\\keven\\.nuget\\packages\\fluentvalidation\\11.2.0\\fluentvalidation.11.2.0.nupkg.sha512",
     "C:\\Users\\keven\\.nuget\\packages\\microsoft.aspnetcore.authentication\\2.2.0\\microsoft.aspnetcore.authentication.2.2.0.nupkg.sha512",
     "C:\\Users\\keven\\.nuget\\packages\\microsoft.aspnetcore.authentication.abstractions\\2.2.0\\microsoft.aspnetcore.authentication.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\keven\\.nuget\\packages\\microsoft.aspnetcore.authentication.core\\2.2.0\\microsoft.aspnetcore.authentication.core.2.2.0.nupkg.sha512",
