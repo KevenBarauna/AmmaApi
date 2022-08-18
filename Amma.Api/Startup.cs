@@ -46,20 +46,21 @@ namespace Amma.Api
              services.AddAutoMapper(new Assembly[] { typeof(AutoMapperProfile).GetTypeInfo().Assembly });
             
             //DB
-            string stringConnection = "Server=localhost;Database=Amma;Trusted_Connection=True;";
-            services.AddDbContext<Contexto>((options) => options.UseSqlServer(stringConnection));
+            services.AddDbContext<Contexto>((options) => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             // SERVICE
             services.AddScoped<IUsuarioService, UsuarioService>();
             services.AddScoped<IPermissaoService, PermissaoService>();
             services.AddScoped<ICategoriaService, CategoriaService>();
             services.AddScoped<IStatusService, StatusService>();
+            services.AddScoped<ISugestaoService, SugestaoService>();
 
             // REPOSITORY
             services.AddScoped<IUsuarioRepository, UsuarioRepository>();
             services.AddScoped<IPermissaoRepository, PermissaoRepository>();
             services.AddScoped<ICategoriaRepository, CategoriaRepository>();
             services.AddScoped<IStatusRepository, StatusRepository>();
+            services.AddScoped<ISugestaoRepository, SugestaoRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

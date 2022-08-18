@@ -28,3 +28,20 @@ CREATE TABLE status
 [valor] VARCHAR(25) NOT NULL, 
 [descricao] VARCHAR(90) NOT NULL, 
 )
+
+CREATE TABLE sugestao
+(
+[id] INT NOT NULL PRIMARY KEY IDENTITY, 
+[idUsuario] INT NOT NULL,
+[idCategoria] INT NOT NULL,
+[idStatus] INT NOT NULL,
+[isAnonimo] BIT NOT NULL,
+[titulo] VARCHAR(30) NOT NULL, 
+[descricao] VARCHAR(200) NOT NULL, 
+[quantidadeVotosPositivos] INT NOT NULL,
+[quantidadeVotosNegativos] INT NOT NULL,
+[dataSugestao] datetime NOT NULL,
+FOREIGN KEY (idUsuario) REFERENCES usuario(id),
+FOREIGN KEY (idCategoria) REFERENCES categoria(id),
+FOREIGN KEY (idStatus) REFERENCES status(id)
+)

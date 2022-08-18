@@ -63,7 +63,7 @@ namespace Amma.Api.Controllers
         }
 
         [HttpDelete]
-        [Route("Deletarsuario")]
+        [Route("DeletarUsuario")]
         public Usuario DeletarUsuario([FromQuery] int idUsuario)
         {
             EscreverLog($"DeletarUsuario id: {idUsuario}", null);
