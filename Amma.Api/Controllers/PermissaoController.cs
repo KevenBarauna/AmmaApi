@@ -3,10 +3,12 @@ using Amma.Api.ViewModels;
 using Amma.Business.Service.Interfaces;
 using Amma.Core.Domain.Entities;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
+using System.Data;
 
 namespace Amma.Api.Controllers
 {
@@ -27,6 +29,7 @@ namespace Amma.Api.Controllers
 
         [HttpGet]
         [Route("BuscarTodasPermissoes")]
+        [Authorize(Roles = "2")]
         public List<Permissao> GetAllPermissoes()
         {
             _logger.LogInformation($"### PermissaoController - GetAllPermissoes");
@@ -36,6 +39,7 @@ namespace Amma.Api.Controllers
 
         [HttpGet]
         [Route("BuscarPermissao")]
+        [Authorize(Roles = "2")]
         public Permissao BuscarPermissao([FromQuery] int idPermissao)
         {
             _logger.LogInformation($"### PermissaoController - BuscarPermissao: {idPermissao}");

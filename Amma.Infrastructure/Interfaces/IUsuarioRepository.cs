@@ -13,5 +13,6 @@ namespace Amma.Infrastructure.Interfaces
         public Usuario Update(Usuario usuario);
         public Usuario GetById(long id);
         public Usuario Delete(Usuario usuario);
+        public Usuario GetByNomeSenha(string usuarioNome, string usuarioSenha);
     }
 }

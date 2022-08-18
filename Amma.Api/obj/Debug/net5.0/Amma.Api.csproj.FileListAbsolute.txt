@@ -64,3 +64,4 @@ G:\Work\PROJETO\_PESSOAL\AMMA\Amma.Api\obj\Debug\net5.0\ref\Amma.Api.dll
 G:\Work\PROJETO\_PESSOAL\AMMA\Amma.Api\obj\Debug\net5.0\Amma.Api.pdb
 G:\Work\PROJETO\_PESSOAL\AMMA\Amma.Api\obj\Debug\net5.0\Amma.Api.genruntimeconfig.cache
 G:\Work\PROJETO\_PESSOAL\AMMA\Amma.Api\obj\Debug\net5.0\refint\Amma.Api.dll
+G:\Work\PROJETO\_PESSOAL\AMMA\Amma.Api\bin\Debug\net5.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll

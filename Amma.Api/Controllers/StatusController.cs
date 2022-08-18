@@ -1,5 +1,6 @@
 ﻿using Amma.Business.Service.Interfaces;
 using Amma.Core.Domain.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
@@ -22,6 +23,7 @@ namespace Amma.Api.Controllers
 
         [HttpGet]
         [Route("BuscarTodosStatus")]
+        [AllowAnonymous]
         public List<Status> GetAllStatus()
         {
             _logger.LogInformation($"### StatusController - GetAllStatus");
@@ -31,6 +33,7 @@ namespace Amma.Api.Controllers
 
         [HttpGet]
         [Route("BuscarStatus")]
+        [AllowAnonymous]
         public Status BuscarStatus([FromQuery] int idStatus)
         {
             _logger.LogInformation($"### StatusController - BuscarStatus: {idStatus}");

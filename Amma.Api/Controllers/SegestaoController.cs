@@ -3,6 +3,7 @@ using Amma.Api.ViewModels;
 using Amma.Business.Service.Interfaces;
 using Amma.Core.Domain.Entities;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -32,6 +33,7 @@ namespace Amma.Api.Controllers
 
         [HttpGet]
         [Route("BuscarTodasSugestoes")]
+        [Authorize]
         public List<Sugestao> GetAllSugestoes()
         {
             EscreverLog("GetAllSugestoes", null);
@@ -40,6 +42,7 @@ namespace Amma.Api.Controllers
 
         [HttpPost]
         [Route("CriarSugestao")]
+        [Authorize]
         public Sugestao CreateSugestao([FromBody] SugestaoDto sugestaoDto)
         {
             var sugestaoMapper = _mapper.Map<Sugestao>(sugestaoDto);
@@ -49,6 +52,7 @@ namespace Amma.Api.Controllers
 
         [HttpPut]
         [Route("EditarSugestao")]
+        [Authorize]
         public Sugestao EditarSugestao([FromBody] SugestaoEditarDto sugestaoEditarDto)
         {
             var sugestaoMapper = _mapper.Map<Sugestao>(sugestaoEditarDto);
@@ -58,6 +62,7 @@ namespace Amma.Api.Controllers
 
         [HttpPut]
         [Route("votoPositivoSugestao")]
+        [Authorize]
         public Sugestao votoPositivoSugestao([FromQuery] int idSugestao)
         {
             EscreverLog($"votoPositivoSugestao {idSugestao}", null);
@@ -66,6 +71,7 @@ namespace Amma.Api.Controllers
 
         [HttpPut]
         [Route("votoPositivoNegativo")]
+        [Authorize]
         public Sugestao votoPositivoNegativo([FromQuery] int idSugestao)
         {
             EscreverLog($"votoPositivoNegativo {idSugestao}", null);
@@ -74,6 +80,7 @@ namespace Amma.Api.Controllers
 
         [HttpGet]
         [Route("BuscarSugestao")]
+        [Authorize]
         public Sugestao BuscarSugestao([FromQuery] int idSugestao)
         {
             EscreverLog($"BuscarSugestao id: {idSugestao}", null);
@@ -82,6 +89,7 @@ namespace Amma.Api.Controllers
 
         [HttpDelete]
         [Route("DeletarSugestao")]
+        [Authorize(Roles = "2")]
         public Sugestao DeletarSugestao([FromQuery] int idSugestao)
         {
             EscreverLog($"DeletarSugestao id: {idSugestao}", null);
@@ -90,6 +98,7 @@ namespace Amma.Api.Controllers
 
         [HttpGet]
         [Route("BuscarTopSugestoes")]
+        [Authorize]
         public List<Sugestao> BuscarTopSugestoes()
         {
             EscreverLog($"BuscarTopSugestoes", null);
@@ -98,6 +107,7 @@ namespace Amma.Api.Controllers
 
         [HttpGet]
         [Route("BuscarTopNegativas")]
+        [Authorize]
         public List<Sugestao> BuscarTopNegativas()
         {
             EscreverLog($"BuscarTopSugestoes", null);

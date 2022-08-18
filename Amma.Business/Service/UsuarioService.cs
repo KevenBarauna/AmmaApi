@@ -65,6 +65,12 @@ namespace Amma.Business.Service
             return _usuarioRepository.GetById(idUsuario);
         }
 
+        public Usuario GetUsuarioByLogin(string usuarioNome, string usuarioSenha)
+        {
+            EscreverLog("GetUsuarioByLogin", null);
+            return _usuarioRepository.GetByNomeSenha(usuarioNome, usuarioSenha);
+        }
+
         public List<Usuario> GetAllUsuarios()
         {
             EscreverLog("GetAllUsuarios", null);

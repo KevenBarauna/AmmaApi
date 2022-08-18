@@ -6,6 +6,9 @@ using Microsoft.Extensions.Logging;
 using AutoMapper;
 using Amma.Api.ViewModels;
 using Amma.Api.Models.DTO;
+using Microsoft.AspNetCore.Authorization;
+using Amma.Core.Domain.Enum;
+using System;
 
 namespace Amma.Api.Controllers
 {
@@ -30,7 +33,9 @@ namespace Amma.Api.Controllers
 
         [HttpGet]
         [Route("BuscarTodosUsuarios")]
+        [Authorize(Roles = "2")]
         public List<UsuarioViewModel> GetAllUsuarios()
+
         {
             EscreverLog("GetAllUsuarios", null);
             return _mapper.Map<List<UsuarioViewModel>>(_usuarioService.GetAllUsuarios());
@@ -38,6 +43,7 @@ namespace Amma.Api.Controllers
 
         [HttpPost]
         [Route("CriarUsuario")]
+        [AllowAnonymous]
         public Usuario CreateUsuario([FromBody] UsuarioCadastrarDto usuario)
         {
             var usuarioMapper = _mapper.Map<Usuario>(usuario);
@@ -47,6 +53,7 @@ namespace Amma.Api.Controllers
 
         [HttpPut]
         [Route("EditarUsuario")]
+        [Authorize]
         public Usuario EditarUsuario([FromBody] UsuarioCadastrarDto usuario)
         {
             var usuarioMapper = _mapper.Map<Usuario>(usuario);
@@ -56,6 +63,7 @@ namespace Amma.Api.Controllers
 
         [HttpGet]
         [Route("BuscarUsuario")]
+        [Authorize]
         public Usuario BuscarUsuario([FromQuery] int idUsuario)
         {
             EscreverLog($"BuscarUsuario id: {idUsuario}", null);
@@ -64,6 +72,7 @@ namespace Amma.Api.Controllers
 
         [HttpDelete]
         [Route("DeletarUsuario")]
+        [Authorize]
         public Usuario DeletarUsuario([FromQuery] int idUsuario)
         {
             EscreverLog($"DeletarUsuario id: {idUsuario}", null);

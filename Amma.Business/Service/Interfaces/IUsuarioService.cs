@@ -10,5 +10,6 @@ namespace Amma.Business.Service.Interfaces
         public Usuario EditarUsuario(Usuario usuario);
         public Usuario GetUsuario(int idUsuario);
         public Usuario DeletarUsuario(int idUsuario);
+        public Usuario GetUsuarioByLogin(string usuarioNome, string usuarioSenha);
     }
 }

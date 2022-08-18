@@ -47,6 +47,12 @@ namespace Amma.Infrastructure.Data.Repository
             return _contexto.usuario.Where( u => u.Id == id).FirstOrDefault();
         }
 
+        public Usuario GetByNomeSenha(string usuarioNome, string usuarioSenha)
+        {
+            _logger.LogInformation($"### UsuarioRepository - GetByNomeSenha");
+            return _contexto.usuario.Where(u => u.Nome == usuarioNome && u.Senha == usuarioSenha).FirstOrDefault();
+        }
+
         public Usuario Delete(Usuario usuario)
         {
             _logger.LogInformation($"### UsuarioRepository - Delete : ${usuario?.Id}");

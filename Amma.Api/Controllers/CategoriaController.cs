@@ -1,6 +1,7 @@
 ﻿using Amma.Business.Service.Interfaces;
 using Amma.Core.Domain.Entities;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -24,6 +25,7 @@ namespace Amma.Api.Controllers
 
         [HttpGet]
         [Route("BuscarTodasCategorias")]
+        [Authorize]
         public List<Categoria> GetAllCategorias()
         {
             _logger.LogInformation($"### CategoriaController - GetAllCategorias");
@@ -32,7 +34,8 @@ namespace Amma.Api.Controllers
 
 
         [HttpGet]
-        [Route("BuscarPermissao")]
+        [Route("BuscarCartegoria")]
+        [Authorize]
         public Categoria BuscarCategoria([FromQuery] int idCategoria)
         {
             _logger.LogInformation($"### CategoriaController - BuscarCategoria: {idCategoria}");
