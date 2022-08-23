@@ -103,6 +103,7 @@ namespace Amma.Api
             services.AddScoped<ICategoriaService, CategoriaService>();
             services.AddScoped<IStatusService, StatusService>();
             services.AddScoped<ISugestaoService, SugestaoService>();
+            services.AddScoped<ICargoService, CargoService>();
 
             // REPOSITORY
             services.AddScoped<IUsuarioRepository, UsuarioRepository>();
@@ -110,6 +111,7 @@ namespace Amma.Api
             services.AddScoped<ICategoriaRepository, CategoriaRepository>();
             services.AddScoped<IStatusRepository, StatusRepository>();
             services.AddScoped<ISugestaoRepository, SugestaoRepository>();
+            services.AddScoped<ICargoRepository, CargoRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
