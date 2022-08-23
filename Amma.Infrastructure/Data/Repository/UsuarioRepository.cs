@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Amma.Core.Domain.Constants;
 using Amma.Core.Domain.Entities;
 using Amma.Infrastructure.Interfaces;
 using Microsoft.EntityFrameworkCore;
@@ -19,10 +20,13 @@ namespace Amma.Infrastructure.Data.Repository
             _logger = logger;
             _contexto = contexto;
         }
+
         public IQueryable<Usuario> FindAll()
         {
             _logger.LogInformation("### UsuarioRepository - FindAll");
-            return _contexto.usuario;
+            var todosUsuarios = _contexto.usuario.Include(x => x.Permissao).Include(x => x.Cargo);
+            todosUsuarios.ToList().ForEach(x => x.Senha = Constant.SENHA_PADRAO);
+            return todosUsuarios;
         }
 
         public Usuario Create(Usuario usuario)
@@ -30,7 +34,9 @@ namespace Amma.Infrastructure.Data.Repository
             _logger.LogInformation("### UsuarioRepository - Create");
             _contexto.usuario.Add(usuario);
             _contexto.SaveChanges();
-            return usuario;
+            var usuarioRetornar = _contexto.usuario.Where(u => u.Id == usuario.Id).Include(x => x.Cargo).Include(x => x.Permissao).FirstOrDefault();
+            usuarioRetornar.Senha = Constant.SENHA_PADRAO;
+            return usuarioRetornar;
         }
 
         public Usuario Update(Usuario usuario)
@@ -38,13 +44,13 @@ namespace Amma.Infrastructure.Data.Repository
             _logger.LogInformation("### UsuarioRepository - Update");
             _contexto.usuario.Update(usuario);
             _contexto.SaveChanges();
-            return usuario;
+            return _contexto.usuario.Where(u => u.Id == usuario.Id).Include(x => x.Cargo).Include(x => x.Permissao).FirstOrDefault();
         }
 
         public Usuario GetById(long id)
         {
             _logger.LogInformation($"### UsuarioRepository - GetById : ${id}");
-            return _contexto.usuario.Where( u => u.Id == id).FirstOrDefault();
+            return _contexto.usuario.Where( u => u.Id == id).Include(x => x.Cargo).Include(x => x.Permissao).FirstOrDefault();
         }
 
         public Usuario GetByNomeSenha(string usuarioNome, string usuarioSenha)

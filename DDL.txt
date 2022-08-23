@@ -4,10 +4,11 @@ CREATE TABLE usuario
 [nome] VARCHAR(40) NOT NULL,
 [senha] VARCHAR(30) NOT NULL,
 [email] VARCHAR(35),
-[cargo] VARCHAR(35),
 [codAvatar] INT NOT NULL,
+[idCargo] INT NOT NULL,
 [idPermissao] INT NOT NULL,
-FOREIGN KEY (idPermissao) REFERENCES permissao(id)
+FOREIGN KEY (idPermissao) REFERENCES permissao(id),
+FOREIGN KEY (idCargo) REFERENCES cargo(id)
 )
 
 CREATE TABLE permissao
@@ -44,4 +45,10 @@ CREATE TABLE sugestao
 FOREIGN KEY (idUsuario) REFERENCES usuario(id),
 FOREIGN KEY (idCategoria) REFERENCES categoria(id),
 FOREIGN KEY (idStatus) REFERENCES status(id)
+)
+
+CREATE TABLE cargo
+(
+[id] INT NOT NULL PRIMARY KEY IDENTITY, 
+[descricao] VARCHAR(30) NOT NULL, 
 )

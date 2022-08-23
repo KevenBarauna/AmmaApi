@@ -16,6 +16,21 @@ INSERT INTO status (valor,descricao) VALUES ('Cancelado','A solicitação foi re
 INSERT INTO permissao(descricao) VALUES ('Padrao')
 INSERT INTO permissao(descricao) VALUES ('Administrador')
 
+INSERT INTO cargo(descricao) VALUES ('Estagiario')
+INSERT INTO cargo(descricao) VALUES ('Support Analyst')
+INSERT INTO cargo(descricao) VALUES ('Infrastructure Specialist')
+INSERT INTO cargo(descricao) VALUES ('Sofware Developer')
+INSERT INTO cargo(descricao) VALUES ('Sofware Enginner')
+INSERT INTO cargo(descricao) VALUES ('Quality Assurance')
+INSERT INTO cargo(descricao) VALUES ('Business Analyst')
+INSERT INTO cargo(descricao) VALUES ('Monitoring Analyst')
+INSERT INTO cargo(descricao) VALUES ('Lead Architect')
+INSERT INTO cargo(descricao) VALUES ('Tech Recruiter')
+INSERT INTO cargo(descricao) VALUES ('Auxiliar Administrativo')
+INSERT INTO cargo(descricao) VALUES ('Designet')
+INSERT INTO cargo(descricao) VALUES ('Team Lead')
+INSERT INTO cargo(descricao) VALUES ('Diretor')
+INSERT INTO cargo(descricao) VALUES ('Outro')
 
-INSERT INTO usuario (nome,senha,email,cargo,idAvatar,idPermissao) VALUES ('adm','adm','keven.barauna@solutis.com.br','Adm AMMA','1','2')
+INSERT INTO usuario (nome,senha,email,idCargo,codAvatar,idPermissao) VALUES ('adm','adm','keven.barauna@solutis.com.br',14,'1','2')
 

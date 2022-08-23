@@ -25,10 +25,10 @@ namespace Amma.Business.Service
 
         private void EscreverLog(string nomeFuncao, Usuario? usuario)
         {
-            _logger.LogInformation($"### UsuarioService - ${nomeFuncao} - {usuario?.Id} - {usuario?.Nome} - {usuario?.Email} - {usuario?.Senha} - {usuario?.Cargo} - {usuario?.IdPermissao} - {usuario?.CodAvatar}");
+            _logger.LogInformation($"### UsuarioService - ${nomeFuncao} - {usuario?.Id} - {usuario?.Nome} - {usuario?.Email} - {usuario?.IdCargo} - {usuario?.IdPermissao} - {usuario?.CodAvatar}");
         }
 
-        private void EscreverErro(string nomeFuncao, string mensagem)
+        private void EscreverLogErro(string nomeFuncao, string mensagem)
         {
             _logger.LogError($"### UsuarioService - ${nomeFuncao} - {mensagem}");
         }
@@ -42,9 +42,9 @@ namespace Amma.Business.Service
             {
                 foreach (var failure in result.Errors)
                 {
-                    Console.WriteLine("Property " + failure.PropertyName + " failed validation. Error was: " + failure.ErrorMessage);
-                    EscreverErro($"CreateUsuario", $"Quantidade de erros na validação");
-                    throw new Exception("Deu erro");
+                    string mensagemErro = $"Propriedade: {failure.PropertyName} não é válido(a), Erro: {failure.ErrorMessage}";
+                    EscreverLogErro("CreateUsuario", mensagemErro);
+                    throw new Exception(mensagemErro);
                 }
             }
 
@@ -60,9 +60,9 @@ namespace Amma.Business.Service
             {
                 foreach (var failure in result.Errors)
                 {
-                    Console.WriteLine("Property " + failure.PropertyName + " failed validation. Error was: " + failure.ErrorMessage);
-                    EscreverErro($"CreateUsuario", $"Quantidade de erros na validação");
-                    throw new Exception("Deu erro");
+                    string mensagemErro = $"Propriedade: {failure.PropertyName} não é válido(a), Erro: {failure.ErrorMessage}";
+                    EscreverLogErro("EditarUsuario", mensagemErro);
+                    throw new Exception(mensagemErro);
                 }
             }
             return _usuarioRepository.Update(usuario);
@@ -83,8 +83,7 @@ namespace Amma.Business.Service
         public List<Usuario> GetAllUsuarios()
         {
             EscreverLog("GetAllUsuarios", null);
-            var usuarios = _usuarioRepository.FindAll();
-            return usuarios.Include(x => x.permissao).ToList();
+            return _usuarioRepository.FindAll().ToList();
         }
 
         public Usuario DeletarUsuario(int idUsuario)

@@ -19,7 +19,7 @@ namespace Amma.Api.Security
                 Subject = new ClaimsIdentity(new[] {
                     new Claim(ClaimTypes.Name, usuario.Nome),
                     new Claim(ClaimTypes.Role, usuario.IdPermissao.ToString()),
-                    new Claim("Cargo", usuario.Cargo),
+                    new Claim("Cargo", usuario.IdCargo.ToString()),
 
                 }),
                 Expires = DateTime.UtcNow.AddHours(8),

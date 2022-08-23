@@ -1,8 +1,4 @@
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Threading.Tasks;
 using Amma.Core.Domain.Entities.Base;
 
 namespace Amma.Core.Domain.Entities
@@ -16,15 +12,17 @@ namespace Amma.Core.Domain.Entities
         public string Senha { get; set; }
         [Column("email")]
         public string Email { get; set; }
-        [Column("cargo")]
-        public string Cargo { get; set; }
+        [Column("idCargo")]
+        public int IdCargo { get; set; }
         [Column("codAvatar")]
         public int CodAvatar { get; set; }
 
         [Column("idPermissao")]
         public int IdPermissao { get; set; }
         [ForeignKey("IdPermissao")]
-        public Permissao permissao { get; set; }
+        public Permissao Permissao { get; set; }
+        [ForeignKey("IdCargo")]
+        public Cargo Cargo { get; set; }
 
     }
 }

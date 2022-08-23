@@ -12,7 +12,7 @@ namespace Amma.Business.Validations.Usuario
             // NOVO USUÁRIO
             RuleFor(instance => instance).Must(i => !string.IsNullOrEmpty(i.Nome)).WithMessage("Nome tá em branco cara");
             RuleFor(instance => instance).Must(i => !string.IsNullOrEmpty(i.Senha)).WithMessage("Senha tá em branco cara");
-            RuleFor(instance => instance).Must(i => !string.IsNullOrEmpty(i.Cargo)).WithMessage("Cargo tá em branco cara");
+            RuleFor(instance => instance).Must(i => !string.IsNullOrEmpty(i.IdCargo.ToString())).WithMessage("Cargo tá em branco cara");
             RuleFor(instance => instance).Must(i => !string.IsNullOrEmpty(i.CodAvatar.ToString())).WithMessage("CodAvatar tá em branco cara");
             RuleFor(instance => instance).Must(i => !string.IsNullOrEmpty(i.Email)).WithMessage("Email tá em branco cara");
         }

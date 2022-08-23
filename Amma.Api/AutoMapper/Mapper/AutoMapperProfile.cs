@@ -11,8 +11,6 @@ namespace Amma.Api.AutoMapper.Mapper
             UsuarioMapperRequest.Map(this);
             UsuarioMapperResponse.Map(this);
 
-            UsuarioCreateMapperRequest.UsuarioCreateMapperRequest.Map(this);
-
             SugestaoMapperRequest.Map(this);
             SugestaoMapperResponse.Map(this);
 

@@ -7,8 +7,8 @@ using AutoMapper;
 using Amma.Api.ViewModels;
 using Amma.Api.Models.DTO;
 using Microsoft.AspNetCore.Authorization;
-using Amma.Core.Domain.Enum;
-using System;
+using Amma.Api.Security;
+using System.Threading.Tasks;
 
 namespace Amma.Api.Controllers
 {
@@ -26,9 +26,9 @@ namespace Amma.Api.Controllers
             _usuarioService = usuarioService;
         }
 
-        private void EscreverLog(string nomeFuncao, Usuario? usuario)
+        private void EscreverLog(string nomeFuncao, string parametroRecebido)
         {
-            _logger.LogInformation($"### UsuarioController - ${nomeFuncao} - {usuario?.Id} - {usuario?.Nome} - {usuario?.Email} - {usuario?.Senha} - {usuario?.Cargo} - {usuario?.IdPermissao} - {usuario?.CodAvatar}");
+            _logger.LogInformation($"### UsuarioController - ${nomeFuncao} - {parametroRecebido}");
         }
 
         [HttpGet]
@@ -44,30 +44,31 @@ namespace Amma.Api.Controllers
         [HttpPost]
         [Route("CriarUsuario")]
         [AllowAnonymous]
-        public Usuario CreateUsuario([FromBody] UsuarioCadastrarDto usuario)
+        public async Task<ActionResult<dynamic>> CreateUsuario([FromBody] UsuarioDto usuario)
         {
-            var usuarioMapper = _mapper.Map<Usuario>(usuario);
-            EscreverLog("CreateUsuario", usuarioMapper);
-            return _usuarioService.CreateUsuario(usuarioMapper);
+            EscreverLog("CreateUsuario", usuario.Nome);
+            var novoUsuario = _usuarioService.CreateUsuario(_mapper.Map<Usuario>(usuario));
+            var usuarioAutenticado = Autenticacao.AutenticarUsuario(novoUsuario);
+            return usuarioAutenticado.Result.Value;
+
         }
 
         [HttpPut]
         [Route("EditarUsuario")]
         [Authorize]
-        public Usuario EditarUsuario([FromBody] UsuarioCadastrarDto usuario)
+        public Usuario EditarUsuario([FromBody] UsuarioDto usuario)
         {
-            var usuarioMapper = _mapper.Map<Usuario>(usuario);
-            EscreverLog("EditarUsuario", usuarioMapper);
-            return _usuarioService.EditarUsuario(usuarioMapper);
+            EscreverLog("EditarUsuario", usuario.Nome);
+            return _usuarioService.EditarUsuario(_mapper.Map<Usuario>(usuario));
         }
 
         [HttpGet]
         [Route("BuscarUsuario")]
         [Authorize]
-        public Usuario BuscarUsuario([FromQuery] int idUsuario)
+        public UsuarioViewModel BuscarUsuario([FromQuery] int idUsuario)
         {
-            EscreverLog($"BuscarUsuario id: {idUsuario}", null);
-            return _usuarioService.GetUsuario(idUsuario);
+            EscreverLog("BuscarUsuario", $"id: {idUsuario}");
+            return _mapper.Map<UsuarioViewModel>(_usuarioService.GetUsuario(idUsuario));  
         }
 
         [HttpDelete]
@@ -75,7 +76,7 @@ namespace Amma.Api.Controllers
         [Authorize]
         public Usuario DeletarUsuario([FromQuery] int idUsuario)
         {
-            EscreverLog($"DeletarUsuario id: {idUsuario}", null);
+            EscreverLog($"DeletarUsuario", $"id: {idUsuario}");
             return _usuarioService.DeletarUsuario(idUsuario);
         }
 

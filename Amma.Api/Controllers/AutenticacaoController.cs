@@ -1,12 +1,8 @@
-﻿using Amma.Api.Models.DTO;
-using Amma.Api.Security;
-using Amma.Api.ViewModels;
+﻿using Amma.Api.Security;
 using Amma.Business.Service.Interfaces;
-using Amma.Core.Domain.Entities;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Amma.Api.Controllers
@@ -30,16 +26,14 @@ namespace Amma.Api.Controllers
         public async Task<ActionResult<dynamic>> Login([FromQuery] string usuarioNome, string usuarioSenha)
         {
             _logger.LogInformation($"### AutenticacaoController - Login");
-            var usuario = _usuarioService.GetUsuarioByLogin(usuarioNome, usuarioSenha);
-            if (usuario == null)
+            var usuarioAutenticado = Autenticacao.AutenticarUsuario(_usuarioService.GetUsuarioByLogin(usuarioNome, usuarioSenha));
+            if (string.IsNullOrEmpty(usuarioAutenticado.Result.Value.token))
             {
                 return NotFound(new { message = "Usuário ou senha inválidos" });
             }
             else
             {
-                var token = TokenService.GenerateToken(usuario);
-                usuario.Senha = null;
-                return new { usuario = usuario, token = token };
+                return usuarioAutenticado.Result.Value;
             }
 
         }
