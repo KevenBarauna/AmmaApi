@@ -1,17 +1,12 @@
 ﻿using Amma.Business.Service.Interfaces;
 using Amma.Business.Validations.Sugestao;
-using Amma.Business.Validations.Usuario;
 using Amma.Core.Domain.Entities;
 using Amma.Core.Domain.Enum;
-using Amma.Core.Domain.Error;
 using Amma.Infrastructure.Interfaces;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Amma.Business.Service
 {
@@ -26,14 +21,14 @@ namespace Amma.Business.Service
             _sugestaoRepository = sugestaoRepository;
         }
 
-        private void EscreverLog(string nomeFuncao, Sugestao? sugestao)
+        private void EscreverLog(string nomeFuncao, string parametro)
         {
-            // _logger.LogInformation($"### UsuarioService - ${nomeFuncao} - {usuario?.Id} - {usuario?.Nome} - {usuario?.Email} - {usuario?.Senha} - {usuario?.Cargo} - {usuario?.IdPermissao} - {usuario?.CodAvatar}");
+            _logger.LogInformation($"### SugestaoService - ${nomeFuncao} - {parametro}");
         }
 
-        private void EscreverErro(string nomeFuncao, string mensagem)
+        private void EscreverLogErro(string nomeFuncao, string mensagem)
         {
-            // _logger.LogError($"### UsuarioService - ${nomeFuncao} - {mensagem}");
+            _logger.LogError($"### SugestaoService - ${nomeFuncao} - {mensagem}");
         }
 
         private Sugestao ConfigurarNovaSugestao(Sugestao sugestao)
@@ -42,7 +37,7 @@ namespace Amma.Business.Service
             sugestao.QuantidadeVotosPositivos = 0;
             sugestao.QuantidadeVotosNegativos = 0;
             sugestao.IdStatus = Convert.ToInt32(EnumStatus.AGUARDANDO);
-            EscreverLog("ConfigurarNovaSugestao", sugestao);
+            EscreverLog("ConfigurarNovaSugestao", sugestao.Titulo);
             return sugestao;
         }
 
@@ -57,13 +52,13 @@ namespace Amma.Business.Service
             sugestao.QuantidadeVotosPositivos = sugestaoAnterior.QuantidadeVotosPositivos;
             sugestao.QuantidadeVotosNegativos = sugestaoAnterior.QuantidadeVotosNegativos;
             sugestao.DataSugestao = sugestaoAnterior.DataSugestao;
-            EscreverLog("ConfigurarEditarSugestao", sugestao);
+            EscreverLog("ConfigurarEditarSugestao", sugestao.Titulo);
             return sugestao;
         }
 
         public Sugestao CreateSugestao(Sugestao sugestao)
         {
-            EscreverLog("CreateSugestao", sugestao);
+            EscreverLog("CreateSugestao", sugestao.Titulo);
             sugestao = ConfigurarNovaSugestao(sugestao);
             SugestaoValidations validator = new SugestaoValidations();
             var result = validator.Validate(sugestao);
@@ -71,9 +66,9 @@ namespace Amma.Business.Service
             {
                 foreach (var failure in result.Errors)
                 {
-                    Console.WriteLine("Property " + failure.PropertyName + " failed validation. Error was: " + failure.ErrorMessage);
-                    EscreverErro($"CreateSugestao", $"Quantidade de erros na validação");
-                    throw new Exception("Deu erro");
+                    string mensagemErro = $"Propriedade: {failure.PropertyName} não é válido(a), Erro: {failure.ErrorMessage}";
+                    EscreverLogErro("CreateSugestao", mensagemErro);
+                    throw new Exception(mensagemErro);
                 }
             }
 
@@ -82,7 +77,7 @@ namespace Amma.Business.Service
 
         public Sugestao EditarSugestao(Sugestao sugestao)
         {
-            EscreverLog("EditarSugestao", sugestao);
+            EscreverLog("EditarSugestao", sugestao.Titulo);
             sugestao = ConfigurarEditarSugestao(sugestao);
             SugestaoValidations validator = new SugestaoValidations();
             var result = validator.Validate(sugestao);
@@ -90,9 +85,9 @@ namespace Amma.Business.Service
             {
                 foreach (var failure in result.Errors)
                 {
-                    Console.WriteLine("Property " + failure.PropertyName + " failed validation. Error was: " + failure.ErrorMessage);
-                    EscreverErro($"EditarSugestao", $"Quantidade de erros na validação");
-                    throw new Exception("Deu erro");
+                    string mensagemErro = $"Propriedade: {failure.PropertyName} não é válido(a), Erro: {failure.ErrorMessage}";
+                    EscreverLogErro("CreateSugestao", mensagemErro);
+                    throw new Exception(mensagemErro);
                 }
             }
 
@@ -104,8 +99,7 @@ namespace Amma.Business.Service
             var sugestaoAnterior = GetSugestao(idSugestao);
             sugestaoAnterior.QuantidadeVotosPositivos += 1;
 
-            EscreverLog("EditarSugestaoVotoPositivo", sugestaoAnterior);
-
+            EscreverLog("EditarSugestaoVotoPositivo", $"Id Sugestao: {idSugestao} - Quantidade de votos atual: {sugestaoAnterior.QuantidadeVotosPositivos}");
             return _sugestaoRepository.Update(sugestaoAnterior);
         }
 
@@ -114,14 +108,14 @@ namespace Amma.Business.Service
             var sugestaoAnterior = GetSugestao(idSugestao);
             sugestaoAnterior.QuantidadeVotosNegativos += 1;
 
-            EscreverLog("EditarSugestaoVotoNegativo", sugestaoAnterior);
+            EscreverLog("EditarSugestaoVotoNegativo", $"Id Sugestao: {idSugestao} - Quantidade de votos atual: {sugestaoAnterior.QuantidadeVotosNegativos}");
 
             return _sugestaoRepository.Update(sugestaoAnterior);
         }
 
         public Sugestao GetSugestao(int idSugestao)
         {
-            EscreverLog("GetSugestao", null);
+            EscreverLog("GetSugestao", $"Id: {idSugestao}");
             return _sugestaoRepository.GetById(idSugestao);
         }
 
@@ -129,16 +123,12 @@ namespace Amma.Business.Service
         {
             EscreverLog("GetAllSugestoes", null);
             var sugestoes = _sugestaoRepository.FindAll();
-            if(sugestoes.ToList().Count > 0)
-            {
-                return sugestoes.Include(x => x.Usuario).Include(x => x.Status).Include(x => x.Categoria).ToList();
-            }
             return sugestoes.ToList();
         }
 
         public Sugestao DeletarSugestao(int idSugestao)
         {
-            EscreverLog("DeletarSugestao", null);
+            EscreverLog("DeletarSugestao", $"Id: {idSugestao}");
             Sugestao sugestao = GetSugestao(idSugestao);
             return _sugestaoRepository.Delete(sugestao);
         }
@@ -146,23 +136,13 @@ namespace Amma.Business.Service
         public List<Sugestao> GetTopSugestoesPositivas()
         {
             EscreverLog("GetTopSugestoesPositivas", null);
-            var sugestoes = _sugestaoRepository.GetTopVotosPositivos();
-            if (sugestoes.ToList().Count > 0)
-            {
-                return sugestoes.Include(x => x.Usuario).Include(x => x.Status).Include(x => x.Categoria).ToList();
-            }
-            return sugestoes.ToList();
+            return _sugestaoRepository.GetTopVotosPositivos().ToList();
         }
 
         public List<Sugestao> GetTopSugestoesNegativas()
         {
             EscreverLog("GetTopSugestoesNegativas", null);
-            var sugestoes = _sugestaoRepository.GetTopVotosNegativos();
-            if (sugestoes.ToList().Count > 0)
-            {
-                return sugestoes.Include(x => x.Usuario).Include(x => x.Status).Include(x => x.Categoria).ToList();
-            }
-            return sugestoes.ToList();
+            return _sugestaoRepository.GetTopVotosNegativos().ToList();
         }
     }
 }

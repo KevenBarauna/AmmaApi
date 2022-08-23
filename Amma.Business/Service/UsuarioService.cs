@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Amma.Business.Service.Interfaces;
 using Amma.Business.Validations.Usuario;
 using Amma.Core.Domain.Entities;
-using Amma.Core.Domain.Error;
 using Amma.Infrastructure.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;

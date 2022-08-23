@@ -1,14 +1,9 @@
-﻿using Amma.Api.Models.DTO;
-using Amma.Api.ViewModels;
-using Amma.Business.Service.Interfaces;
+﻿using Amma.Business.Service.Interfaces;
 using Amma.Core.Domain.Entities;
-using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
-using System.Data;
 
 namespace Amma.Api.Controllers
 {

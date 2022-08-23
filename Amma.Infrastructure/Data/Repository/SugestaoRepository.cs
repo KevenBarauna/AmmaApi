@@ -1,5 +1,6 @@
 ﻿using Amma.Core.Domain.Entities;
 using Amma.Infrastructure.Interfaces;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,7 +20,7 @@ namespace Amma.Infrastructure.Data.Repository
         public IQueryable<Sugestao> FindAll()
         {
             _logger.LogInformation("### SugestaoRepository - FindAll");
-            return _contexto.sugestao;
+            return _contexto.sugestao.Include(x => x.Usuario).Include(x => x.Status).Include(x => x.Categoria);
         }
 
         public Sugestao Create(Sugestao sugestao)
@@ -55,13 +56,13 @@ namespace Amma.Infrastructure.Data.Repository
         public IQueryable<Sugestao> GetTopVotosPositivos()
         {
             _logger.LogInformation($"### SugestaoRepository - GetTopVotosPositivos");
-            return _contexto.sugestao.OrderBy(u => u.QuantidadeVotosPositivos);
+            return _contexto.sugestao.OrderBy(u => u.QuantidadeVotosPositivos).Include(x => x.Usuario).Include(x => x.Status).Include(x => x.Categoria);
         }
 
         public IQueryable<Sugestao> GetTopVotosNegativos()
         {
             _logger.LogInformation($"### SugestaoRepository - GetTopVotosNegativos");
-            return _contexto.sugestao.OrderBy(u => u.QuantidadeVotosNegativos);
+            return _contexto.sugestao.OrderBy(u => u.QuantidadeVotosNegativos).Include(x => x.Usuario).Include(x => x.Status).Include(x => x.Categoria);
         }
 
     }

@@ -1,10 +1,8 @@
 ﻿using Amma.Api.Models.DTO;
-using Amma.Api.ViewModels;
 using Amma.Business.Service.Interfaces;
 using Amma.Core.Domain.Entities;
 using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
@@ -26,9 +24,9 @@ namespace Amma.Api.Controllers
             _sugestaoService = sugestaoService;
         }
 
-        private void EscreverLog(string nomeFuncao, Sugestao? sugestao)
+        private void EscreverLog(string nomeFuncao, string parametro)
         {
-            // _logger.LogInformation($"### UsuarioController - ${nomeFuncao} - {usuario?.Id} - {usuario?.Nome} - {usuario?.Email} - {usuario?.Senha} - {usuario?.Cargo} - {usuario?.IdPermissao} - {usuario?.CodAvatar}");
+            _logger.LogInformation($"### SegestaoController - ${nomeFuncao} - {parametro}");
         }
 
         [HttpGet]
@@ -45,9 +43,8 @@ namespace Amma.Api.Controllers
         [Authorize]
         public Sugestao CreateSugestao([FromBody] SugestaoDto sugestaoDto)
         {
-            var sugestaoMapper = _mapper.Map<Sugestao>(sugestaoDto);
-            EscreverLog("CreateSugestao", sugestaoMapper);
-            return _sugestaoService.CreateSugestao(sugestaoMapper);
+            EscreverLog("CreateSugestao", sugestaoDto.Titulo);
+            return _sugestaoService.CreateSugestao(_mapper.Map<Sugestao>(sugestaoDto));
         }
 
         [HttpPut]
@@ -55,26 +52,25 @@ namespace Amma.Api.Controllers
         [Authorize]
         public Sugestao EditarSugestao([FromBody] SugestaoEditarDto sugestaoEditarDto)
         {
-            var sugestaoMapper = _mapper.Map<Sugestao>(sugestaoEditarDto);
-            EscreverLog("EditarSugestao", sugestaoMapper);
-            return _sugestaoService.EditarSugestao(sugestaoMapper);
+            EscreverLog("EditarSugestao", $" Id: {sugestaoEditarDto.Id}");
+            return _sugestaoService.EditarSugestao(_mapper.Map<Sugestao>(sugestaoEditarDto));
         }
 
         [HttpPut]
-        [Route("votoPositivoSugestao")]
+        [Route("VotoPositivoSugestao")]
         [Authorize]
-        public Sugestao votoPositivoSugestao([FromQuery] int idSugestao)
+        public Sugestao VotoPositivoSugestao([FromQuery] int idSugestao)
         {
-            EscreverLog($"votoPositivoSugestao {idSugestao}", null);
+            EscreverLog("VotoPositivoSugestao", $"Id Sugestão: {idSugestao}");
             return _sugestaoService.EditarSugestaoVotoPositivo(idSugestao);
         }
 
         [HttpPut]
-        [Route("votoPositivoNegativo")]
+        [Route("VotoPositivoNegativo")]
         [Authorize]
-        public Sugestao votoPositivoNegativo([FromQuery] int idSugestao)
+        public Sugestao VotoPositivoNegativo([FromQuery] int idSugestao)
         {
-            EscreverLog($"votoPositivoNegativo {idSugestao}", null);
+            EscreverLog("VotoPositivoNegativo", $"Id Sugestão: {idSugestao}");
             return _sugestaoService.EditarSugestaoVotoNegativo(idSugestao);
         }
 
@@ -83,7 +79,7 @@ namespace Amma.Api.Controllers
         [Authorize]
         public Sugestao BuscarSugestao([FromQuery] int idSugestao)
         {
-            EscreverLog($"BuscarSugestao id: {idSugestao}", null);
+            EscreverLog("BuscarSugestao", $"Id Sugestão: {idSugestao}");
             return _sugestaoService.GetSugestao(idSugestao);
         }
 
@@ -92,25 +88,25 @@ namespace Amma.Api.Controllers
         [Authorize(Roles = "2")]
         public Sugestao DeletarSugestao([FromQuery] int idSugestao)
         {
-            EscreverLog($"DeletarSugestao id: {idSugestao}", null);
+            EscreverLog("DeletarSugestao", $"Id Sugestão: {idSugestao}");
             return _sugestaoService.DeletarSugestao(idSugestao);
         }
 
         [HttpGet]
-        [Route("BuscarTopSugestoes")]
+        [Route("BuscarTopSugestoesPositivas")]
         [Authorize]
-        public List<Sugestao> BuscarTopSugestoes()
+        public List<Sugestao> BuscarTopSugestoesPositivas()
         {
-            EscreverLog($"BuscarTopSugestoes", null);
+            EscreverLog($"BuscarTopSugestoesPositivas", null);
             return _sugestaoService.GetTopSugestoesPositivas();
         }
 
         [HttpGet]
-        [Route("BuscarTopNegativas")]
+        [Route("BuscarTopSugestoesNegativas")]
         [Authorize]
-        public List<Sugestao> BuscarTopNegativas()
+        public List<Sugestao> BuscarTopSugestoesNegativas()
         {
-            EscreverLog($"BuscarTopSugestoes", null);
+            EscreverLog($"BuscarTopSugestoesNegativas", null);
             return _sugestaoService.GetTopSugestoesNegativas();
         }
     }

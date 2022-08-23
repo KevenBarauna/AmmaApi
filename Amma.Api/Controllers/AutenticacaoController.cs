@@ -1,6 +1,6 @@
 ﻿using Amma.Api.Security;
 using Amma.Business.Service.Interfaces;
-using AutoMapper;
+using Amma.Core.Domain.Constants;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System.Threading.Tasks;
@@ -12,12 +12,10 @@ namespace Amma.Api.Controllers
     {
         private readonly ILogger<AutenticacaoController> _logger;
         private readonly IUsuarioService _usuarioService;
-        private readonly IMapper _mapper;
 
-        public AutenticacaoController(ILogger<AutenticacaoController> logger, IMapper mapper, IUsuarioService usuarioService)
+        public AutenticacaoController(ILogger<AutenticacaoController> logger, IUsuarioService usuarioService)
         {
             _logger = logger;
-            _mapper = mapper;
             _usuarioService = usuarioService;
         }
 
@@ -29,7 +27,7 @@ namespace Amma.Api.Controllers
             var usuarioAutenticado = Autenticacao.AutenticarUsuario(_usuarioService.GetUsuarioByLogin(usuarioNome, usuarioSenha));
             if (string.IsNullOrEmpty(usuarioAutenticado.Result.Value.token))
             {
-                return NotFound(new { message = "Usuário ou senha inválidos" });
+                return NotFound(new { message = Message.MSG_USUARIO_SENHA_INVALIDOS });
             }
             else
             {
